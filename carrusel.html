@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrusel de Imágenes</title>
+    <style>
+        .carousel-container {
+            width: 500px; /* Ancho del contenedor del carrusel */
+            overflow: hidden; /* Oculta las imágenes que no están visibles */
+        }
+
+        .carousel-slide {
+            display: flex; /* Coloca las imágenes en línea horizontal */
+            width: calc(6 * 500px); /* Ancho total para 6 imágenes */
+            transition: transform 0.5s ease-in-out; /* Animación suave al cambiar de imagen */
+        }
+
+        .carousel-slide img {
+            width: 500px; /* Ancho de cada imagen */
+            height: auto; /* Altura automática para mantener la proporción */
+        }
+
+        .carousel-navigation {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        .carousel-navigation button {
+            margin: 0 5px;
+            padding: 8px 15px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="carousel-container">
+        <div class="carousel-slide">
+            <img src="C:\Users\usuariocc10\Desktop\Proyecto_JS\imagen 1.jpg" alt="Imagen 1">
+            <img src="C:\Users\usuariocc10\Desktop\Proyecto_JS\imagen 2.jpg" alt="Imagen 2">
+            <img src="C:\Users\usuariocc10\Desktop\Proyecto_JS\imagen 3.jpg" alt="Imagen 3">
+            <img src="C:\Users\usuariocc10\Desktop\Proyecto_JS\imagen 4.jpg"alt="Imagen 4">
+            <img src="C:\Users\usuariocc10\Desktop\Proyecto_JS\imagen 5.jpg" alt="Imagen 5">
+            <img src="C:\Users\usuariocc10\Desktop\Proyecto_JS\imagen 6.jpg" alt="Imagen 6">
+        </div>
+    </div>
+    <div class="carousel-navigation">
+        <button onclick="nextSlide()">Siguiente</button>
+        <button onclick="prevSlide()">Anterior</button>
+    </div>
+
+    <script>
+        const carouselSlide = document.querySelector('.carousel-slide');
+        const images = document.querySelectorAll('.carousel-slide img');
+        const prevButton = document.querySelector('.carousel-navigation button:last-child');
+        const nextButton = document.querySelector('.carousel-navigation button:first-child');
+
+        let counter = 0;
+        const slideWidth = images[0].clientWidth;
+
+        function nextSlide() {
+            if (counter >= images.length - 1) return;
+            counter++;
+            carouselSlide.style.transform = `translateX(${-slideWidth * counter}px)`;
+        }
+
+        function prevSlide() {
+            if (counter <= 0) return;
+            counter--;
+            carouselSlide.style.transform = `translateX(${-slideWidth * counter}px)`;
+        }
+    </script>
+</body>
+</html>
